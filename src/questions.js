@@ -28,7 +28,7 @@ const managerQuestions = [{
 
 const optionQuestions = [{
     type: "list",
-    name: "employee",
+    name: "option",
     message: "Choose Engineer or Intern to enter another employee, otherwise finish building your team",
     choices: [{
             name: "engineer",
@@ -48,7 +48,7 @@ const optionQuestions = [{
 const engineerQuestions = [{
         type: "input",
         name: "name",
-        message: "Please enter the emgineer's name: ",
+        message: "Please enter the engineer's name: ",
     },
     {
         type: "input",
@@ -58,12 +58,12 @@ const engineerQuestions = [{
     {
         type: "input",
         name: "email",
-        message: "Please enter the emgineer's email: ",
+        message: "Please enter the engineer's email: ",
     },
     {
         type: "input",
         name: "github",
-        message: "Please enter the emgineer's github username: ",
+        message: "Please enter the engineer's github username: ",
     },
 ];
 
@@ -88,3 +88,11 @@ const internQuestions = [{
         message: "Please enter the intern's school: ",
     },
 ];
+
+module.exports = {
+    beginQuestions,
+    managerQuestions,
+    optionQuestions,
+    engineerQuestions,
+    internQuestions,
+};
