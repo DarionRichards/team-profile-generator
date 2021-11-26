@@ -31,16 +31,16 @@ const optionQuestions = [{
     name: "option",
     message: "Choose Engineer or Intern to enter another employee, otherwise finish building your team",
     choices: [{
-            name: "engineer",
-            value: "Engineer",
+            name: "Engineer",
+            value: "engineer",
         },
         {
-            name: "intern",
-            value: "Intern",
+            name: "Intern",
+            value: "intern",
         },
         {
-            name: "fbt",
-            value: "Finish building your team",
+            name: "Finish building your team",
+            value: "fbt",
         },
     ],
 }, ];
