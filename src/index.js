@@ -1,25 +1,19 @@
 const {
-    beginQuestions,
+    teamNameQuestions,
     managerQuestions,
     optionQuestions,
     engineerQuestions,
     internQuestions,
 } = require("./questions");
 
-console.log(
-    "Begin question: ",
-    beginQuestions,
-    "\n",
-    "Managerquestions: ",
-    managerQuestions,
-    "\n",
-    "Option questions: ",
-    optionQuestions,
-    "\n",
-    "Engineer questions: ",
-    engineerQuestions,
-    "\n",
-    "Intern questions: ",
-    internQuestions,
-    "\n"
-);
+/* 
+
+!  TO DO
+
+1. Declare start function
+    a. prompt beginQuestion
+2. Import inquirer
+3. Import fs
+4. Import classes
+
+*/

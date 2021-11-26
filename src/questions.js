@@ -1,4 +1,4 @@
-const beginQuestions = [{
+const teamNameQuestions = [{
     type: "input",
     name: "teamName",
     message: "Please enter your team name: ",
@@ -90,7 +90,7 @@ const internQuestions = [{
 ];
 
 module.exports = {
-    beginQuestions,
+    teamNameQuestions,
     managerQuestions,
     optionQuestions,
     engineerQuestions,
