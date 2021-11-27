@@ -6,6 +6,7 @@
     "scripts": {
         "start": "node src/index.js",
         "start:nodemon": "nodemon src/index.js",
+        "html": "node src/html.js",
         "test": "jest --verbose --coverage",
         "test:watch": "jest --verbose --watch"
     },

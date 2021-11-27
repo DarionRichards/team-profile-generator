@@ -1,4 +1,8 @@
-const buildHead = () => {
+const Manager = require("./lib/Manager");
+const Engineer = require("./lib/Engineer");
+const Intern = require("./lib/Intern");
+
+const buildHead = (teamName) => {
     return `<!DOCTYPE html>
 <html lang="en">
     
@@ -6,72 +10,72 @@ const buildHead = () => {
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="./reset.css" />
-        <link rel="stylesheet" href="./styles.css" />
-        <title>Team Profiles</title>
+        <link rel="stylesheet" href="./dist/reset.css" />
+        <link rel="stylesheet" href="./dist/styles.css" />
+        <title>${teamName} Profiles</title>
 </head>
     
 `;
 };
 
-const buildBodyStart = () => {
+const buildBodyStart = (teamName) => {
     return `<body>
-    <header class="header">My Team</header>
+    <header class="header">${teamName}</header>
 
     <main>
         <section class="container">
             `;
 };
 
-const buildManagerCard = () => {
+const buildManagerCard = ({ name, id, email, officeNumber }, getRole) => {
     return `<section class="card-container">
                 <section class="card-title">
-                    <h2>Name</h2>
+                    <h2>${name}</h2>
                     <div>
                         <i class=""></i>
-                        <h3>Status</h3>
+                        <h3>${getRole}</h3>
                     </div>
                 </section>
                 <section class="card-body">
-                    <p class="card-info">ID:</p>
-                    <p class="card-info">Email:</p>
-                    <p class="card-info">Office Number:</p>
+                    <p class="card-info">ID: ${id}</p>
+                    <p class="card-info">Email: ${email}</p>
+                    <p class="card-info">Office Number: ${officeNumber}</p>
                 </section>
             </section>
             `;
 };
 
-const buildEngineerCard = () => {
+const buildEngineerCard = ({ name, id, email, github }, getRole) => {
     return `<section class="card-container">
                 <section class="card-title">
-                    <h2>Name</h2>
+                    <h2>${name}</h2>
                     <div>
                         <i class=""></i>
-                        <h3>Status</h3>
+                        <h3>${getRole}</h3>
                     </div>
                 </section>
                 <section class="card-body">
-                    <p class="card-info">ID:</p>
-                    <p class="card-info">Email:</p>
-                    <p class="card-info">GitHub:</p>
+                    <p class="card-info">ID: ${id}</p>
+                    <p class="card-info">Email: ${email}</p>
+                    <p class="card-info">GitHub: ${github}</p>
                 </section>
             </section>
             `;
 };
 
-const buildInternCard = () => {
+const buildInternCard = ({ name, id, email, school }, getRole) => {
     return `<section class="card-container">
                 <section class="card-title">
-                    <h2>Name</h2>
+                    <h2>${name}</h2>
                     <div>
                         <i class=""></i>
-                        <h3>Status</h3>
+                        <h3>${getRole}</h3>
                     </div>
                 </section>
                 <section class="card-body">
-                    <p class="card-info">ID:</p>
-                    <p class="card-info">Email:</p>
-                    <p class="card-info">School:</p>
+                    <p class="card-info">ID: ${id}</p>
+                    <p class="card-info">Email: ${email}</p>
+                    <p class="card-info">School: ${school}</p>
                 </section>
             </section>
         `;
@@ -85,25 +89,32 @@ const buildBodyEnd = () => {
 `;
 };
 
-const buildTeam = () => {
-    const head = buildHead();
-    const body = buildBodyStart();
-    const managerCard = buildManagerCard();
-    const engineerCard = buildEngineerCard();
-    const internCard = buildInternCard();
-    const buildEnd = buildBodyEnd();
+const buildTeam = (array, teamName) => {
+    let cards = "";
 
-    let string = "";
+    const head = buildHead(teamName);
+    const bodyStart = buildBodyStart(teamName);
 
-    console.log(
-        head +
-        body +
-        managerCard +
-        engineerCard +
-        engineerCard +
-        internCard +
-        buildEnd
-    );
+    array.map((object) => {
+        if (object instanceof Manager) {
+            const manager = buildManagerCard(object, object.getRole());
+            cards += manager;
+        }
+        if (object instanceof Engineer) {
+            const engineer = buildEngineerCard(object, object.getRole());
+            cards += engineer;
+        }
+        if (object instanceof Intern) {
+            const intern = buildInternCard(object, object.getRole());
+            cards += intern;
+        }
+    });
+
+    const bodyEnd = buildBodyEnd();
+
+    const generatedHTML = head + bodyStart + cards + bodyEnd;
+
+    return generatedHTML;
 };
 
-buildTeam();
+module.exports = buildTeam;
