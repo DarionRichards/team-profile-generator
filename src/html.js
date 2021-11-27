@@ -9,6 +9,7 @@ const buildHead = (teamName) => `<!DOCTYPE html>
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script src="https://kit.fontawesome.com/8b26d47a6c.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="./dist/reset.css" />
         <link rel="stylesheet" href="./dist/styles.css" />
         <title>${teamName} Profiles</title>
@@ -29,8 +30,7 @@ const constructManagerCard = ({ name, id, email, officeNumber },
                 <section class="card-title">
                     <h2>${name}</h2>
                     <div>
-                        <i class=""></i>
-                        <h3>${getRole}</h3>
+                        <h3><i class="fas fa-user-tie"></i> ${getRole}</h3>
                     </div>
                 </section>
                 <section class="card-body">
@@ -47,8 +47,7 @@ const constructEngineerCard = ({ name, id, email, github },
                 <section class="card-title">
                     <h2>${name}</h2>
                     <div>
-                        <i class=""></i>
-                        <h3>${getRole}</h3>
+                        <h3><i class="fas fa-desktop"></i> ${getRole}</h3>
                     </div>
                 </section>
                 <section class="card-body">
@@ -65,8 +64,7 @@ const constructInternCard = ({ name, id, email, school },
                 <section class="card-title">
                     <h2>${name}</h2>
                     <div>
-                        <i class=""></i>
-                        <h3>${getRole}</h3>
+                        <h3><i class="fas fa-user-graduate"></i> ${getRole}</h3>
                     </div>
                 </section>
                 <section class="card-body">
