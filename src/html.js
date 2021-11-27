@@ -35,7 +35,7 @@ const constructManagerCard = ({ name, id, email, officeNumber },
                 </section>
                 <section class="card-body">
                     <p class="card-info">ID: ${id}</p>
-                    <p class="card-info">Email: ${email}</p>
+                    <p class="card-info">Email: <a href="mailto:${email}">${email}</a></p>
                     <p class="card-info">Office Number: ${officeNumber}</p>
                 </section>
             </section>
@@ -53,8 +53,8 @@ const constructEngineerCard = ({ name, id, email, github },
                 </section>
                 <section class="card-body">
                     <p class="card-info">ID: ${id}</p>
-                    <p class="card-info">Email: ${email}</p>
-                    <p class="card-info">GitHub: ${github}</p>
+                    <p class="card-info">Email: <a href="mailto:${email}">${email}</a></p>
+                    <p class="card-info">GitHub: <a href="https://github.com/${github}">${github}</p></a>
                 </section>
             </section>
             `;
@@ -71,7 +71,7 @@ const constructInternCard = ({ name, id, email, school },
                 </section>
                 <section class="card-body">
                     <p class="card-info">ID: ${id}</p>
-                    <p class="card-info">Email: ${email}</p>
+                    <p class="card-info">Email: <a href="mailto:${email}">${email}</a></p>
                     <p class="card-info">School: ${school}</p>
                 </section>
             </section>
