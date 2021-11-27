@@ -2,8 +2,7 @@ const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 
-const buildHead = (teamName) => {
-    return `<!DOCTYPE html>
+const buildHead = (teamName) => `<!DOCTYPE html>
 <html lang="en">
     
 <head>
@@ -16,19 +15,17 @@ const buildHead = (teamName) => {
 </head>
     
 `;
-};
 
-const buildBodyStart = (teamName) => {
-    return `<body>
+const buildBodyStart = (teamName) => `<body>
     <header class="header">${teamName}</header>
 
     <main>
         <section class="container">
             `;
-};
 
-const buildManagerCard = ({ name, id, email, officeNumber }, getRole) => {
-    return `<section class="card-container">
+const buildManagerCard = ({ name, id, email, officeNumber },
+    getRole
+) => `<section class="card-container">
                 <section class="card-title">
                     <h2>${name}</h2>
                     <div>
@@ -43,10 +40,10 @@ const buildManagerCard = ({ name, id, email, officeNumber }, getRole) => {
                 </section>
             </section>
             `;
-};
 
-const buildEngineerCard = ({ name, id, email, github }, getRole) => {
-    return `<section class="card-container">
+const buildEngineerCard = ({ name, id, email, github },
+    getRole
+) => `<section class="card-container">
                 <section class="card-title">
                     <h2>${name}</h2>
                     <div>
@@ -61,10 +58,10 @@ const buildEngineerCard = ({ name, id, email, github }, getRole) => {
                 </section>
             </section>
             `;
-};
 
-const buildInternCard = ({ name, id, email, school }, getRole) => {
-    return `<section class="card-container">
+const buildInternCard = ({ name, id, email, school },
+    getRole
+) => `<section class="card-container">
                 <section class="card-title">
                     <h2>${name}</h2>
                     <div>
@@ -79,15 +76,12 @@ const buildInternCard = ({ name, id, email, school }, getRole) => {
                 </section>
             </section>
         `;
-};
 
-const buildBodyEnd = () => {
-    return `</section>
+const buildBodyEnd = () => `</section>
     </main>
 </body>
 </html>
 `;
-};
 
 const buildTeam = (array, teamName) => {
     let cards = "";
@@ -114,6 +108,7 @@ const buildTeam = (array, teamName) => {
 
     const generatedHTML = head + bodyStart + cards + bodyEnd;
 
+    console.log(generatedHTML);
     return generatedHTML;
 };
 
