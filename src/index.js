@@ -15,6 +15,7 @@ const {
     engineerQuestions,
     internQuestions,
 } = require("./questions");
+const Employee = require("./lib/Employee");
 
 const start = async() => {
     let employeeArray = [];
@@ -23,32 +24,29 @@ const start = async() => {
     const teamNameAnswers = await prompt(teamNameQuestions);
 
     if (teamNameAnswers.teamName) {
-        const managerAnswers = await prompt(managerQuestions);
-        employeeArray.push(managerAnswers);
+        const { name, id, email, officeNumber } = await prompt(managerQuestions);
+        const manager = new Manager({ name, id, email, officeNumber });
+        employeeArray.push(manager);
 
-        if (managerAnswers) {
+        if (manager) {
             while (askQuestions) {
                 const optionAnswer = await prompt(optionQuestions);
 
                 let userInput = optionAnswer.option;
 
-                switch (userInput) {
-                    case "engineer":
-                        const engineerAnswers = await prompt(engineerQuestions);
-                        employeeArray.push(engineerAnswers);
-                        break;
-
-                    case "intern":
-                        const internAnswers = await prompt(internQuestions);
-                        employeeArray.push(internAnswers);
-                        break;
-
-                    case "fbt":
-                        console.log(employeeArray);
-                        return (askQuestions = false);
-
-                    default:
-                        break;
+                if (userInput === "engineer") {
+                    const { name, id, email, github } = await prompt(engineerQuestions);
+                    const employee = new Engineer({ name, id, email, github });
+                    employeeArray.push(employee);
+                }
+                if (userInput === "intern") {
+                    const { name, id, email, school } = await prompt(internQuestions);
+                    const intern = new Intern({ name, id, email, school });
+                    employeeArray.push(intern);
+                }
+                if (userInput === "fbt") {
+                    console.log(employeeArray);
+                    return (askQuestions = false);
                 }
             }
         }
