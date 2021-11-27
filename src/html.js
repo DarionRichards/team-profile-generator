@@ -23,7 +23,7 @@ const buildBodyStart = (teamName) => `<body>
         <section class="container">
             `;
 
-const buildManagerCard = ({ name, id, email, officeNumber },
+const constructManagerCard = ({ name, id, email, officeNumber },
     getRole
 ) => `<section class="card-container">
                 <section class="card-title">
@@ -41,7 +41,7 @@ const buildManagerCard = ({ name, id, email, officeNumber },
             </section>
             `;
 
-const buildEngineerCard = ({ name, id, email, github },
+const constructEngineerCard = ({ name, id, email, github },
     getRole
 ) => `<section class="card-container">
                 <section class="card-title">
@@ -59,7 +59,7 @@ const buildEngineerCard = ({ name, id, email, github },
             </section>
             `;
 
-const buildInternCard = ({ name, id, email, school },
+const constructInternCard = ({ name, id, email, school },
     getRole
 ) => `<section class="card-container">
                 <section class="card-title">
@@ -84,32 +84,38 @@ const buildBodyEnd = () => `</section>
 `;
 
 const buildTeam = (array, teamName) => {
+    // empty string to store generated HTML cards
     let cards = "";
 
+    // open HTML document
     const head = buildHead(teamName);
     const bodyStart = buildBodyStart(teamName);
 
+    // map over each element, from the array argument passed when the function is invoked, append constructed cards to empty string (cards)
     array.map((object) => {
         if (object instanceof Manager) {
-            const manager = buildManagerCard(object, object.getRole());
+            const manager = constructManagerCard(object, object.getRole());
             cards += manager;
         }
         if (object instanceof Engineer) {
-            const engineer = buildEngineerCard(object, object.getRole());
+            const engineer = constructEngineerCard(object, object.getRole());
             cards += engineer;
         }
         if (object instanceof Intern) {
-            const intern = buildInternCard(object, object.getRole());
+            const intern = constructInternCard(object, object.getRole());
             cards += intern;
         }
     });
 
+    // close HTML document
     const bodyEnd = buildBodyEnd();
 
+    // append generated strings in order of HTML
     const generatedHTML = head + bodyStart + cards + bodyEnd;
 
     console.log(generatedHTML);
     return generatedHTML;
 };
 
+// export buildTeam() function
 module.exports = buildTeam;
