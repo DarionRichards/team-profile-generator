@@ -33,35 +33,29 @@ const start = async() => {
 
     const teamNameAnswers = await prompt(teamNameQuestions);
 
-    if (teamNameAnswers.teamName) {
-        const { name, id, email, officeNumber } = await prompt(managerQuestions);
-        const manager = new Manager({ name, id, email, officeNumber });
-        employeeArray.push(manager);
+    const { name, id, email, officeNumber } = await prompt(managerQuestions);
+    const manager = new Manager({ name, id, email, officeNumber });
+    employeeArray.push(manager);
 
-        let askQuestions = true;
-        while (askQuestions) {
-            const optionAnswer = await prompt(optionQuestions);
+    let askQuestions = true;
+    while (askQuestions) {
+        const optionAnswer = await prompt(optionQuestions);
 
-            let userInput = optionAnswer.option;
+        let userInput = optionAnswer.option;
 
-            if (userInput === "engineer") {
-                const { name, id, email, github } = await prompt(engineerQuestions);
-                const employee = new Engineer({ name, id, email, github });
-                employeeArray.push(employee);
-            }
-            if (userInput === "intern") {
-                const { name, id, email, school } = await prompt(internQuestions);
-                const intern = new Intern({ name, id, email, school });
-                employeeArray.push(intern);
-            }
-            if (userInput === "fbt") {
-                askQuestions = false;
-            }
+        if (userInput === "engineer") {
+            const { name, id, email, github } = await prompt(engineerQuestions);
+            const employee = new Engineer({ name, id, email, github });
+            employeeArray.push(employee);
         }
-    } else {
-        console.log(
-            "Please enter a VALID team name, in order to start building your team"
-        );
+        if (userInput === "intern") {
+            const { name, id, email, school } = await prompt(internQuestions);
+            const intern = new Intern({ name, id, email, school });
+            employeeArray.push(intern);
+        }
+        if (userInput === "fbt") {
+            askQuestions = false;
+        }
     }
 
     const generatedHTML = htmlTemplate(employeeArray, teamNameAnswers.teamName);
