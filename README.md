@@ -87,4 +87,4 @@ npm run test
 
 ## **Application Demo**
 
-<iframe src="https://drive.google.com/file/d/1cdibXXy26jrlPuNZggxj6KCs0w5khPvE/preview" width="640" height="480"></iframe>
+https://drive.google.com/file/d/1cdibXXy26jrlPuNZggxj6KCs0w5khPvE/preview
