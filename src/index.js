@@ -74,7 +74,7 @@ const start = async() => {
     const generatedHTML = htmlTemplate(employeeArray, teamNameAnswers.teamName);
 
     // pass string and write HTML file
-    writeToFile("GENERATED_HTML.html", generatedHTML);
+    writeToFile("./dist/GENERATED_HTML.html", generatedHTML);
 };
 
 start();
